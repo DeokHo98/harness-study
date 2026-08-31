@@ -11,34 +11,6 @@
 
 > **Claude Code의 성능은 모델 하나로 결정되지 않는다. 모델이 어떤 Context를 보고 · 어떤 Permission으로 · 어떤 Tool을 사용하며 · 어떻게 검증받는지를 설계한 Harness가 크게 좌우한다.**
 
----
-
-## 전체 지도
-
-```text
-Part 1.  기초 — 하네스가 무엇이고 어디에 붙어 있는가
-   ↓
-Part 2~5. 하네스를 하나씩 — Context / Permission / Verification·Debug / Tool
-   ↓        (한 번의 실행을 안전하고 정확하게)
-Part 6.  작업 분리와 병렬 운영 — Subagent / Worktree / Plan-First / 팀 자동화
-   ↓        (여러 실행을 충돌 없이)
-Part 7.  CodeCraft — 요구사항 → 설계(OOD/SOLID) → 구현 → 검증
-   ↓        (무엇을 만들지 사람이 먼저 판단)
-Part 8.  모델 세대별 운영 — Opus 4.8 / Opus 5 / Fable 5
-   ↓        (모델이 바뀌면 하네스도 바뀐다)
-Part 9.  Graph Engineering — Node/Edge/State, 병렬·검증·복구·상태 영속화
-```
-
-| 설계 단계 | 대상 | 이 책의 위치 |
-|---|---|---|
-| Prompt Engineering | 한 번의 요청(메시지) | (전제) |
-| Context Engineering | 모델이 참고할 정보의 범위 | Part 2 |
-| **Harness Engineering** | 한 번의 실행 환경(권한·도구·완료 기준) | Part 1·3·4·5 |
-| Loop Engineering | 반복 실행 | 24장 |
-| Graph Engineering | 여러 작업과 실행 사이의 관계 | Part 9 |
-
----
-
 ## 목차
 
 | Part | 장 | 핵심 |
