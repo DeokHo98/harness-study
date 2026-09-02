@@ -27,7 +27,7 @@ Part 2~5. 하네스를 하나씩 — Context / Permission / Verification·Debug 
    ↓        (한 번의 실행을 안전하고 정확하게)
 Part 6.  작업 분리와 병렬 운영 — Subagent / Worktree / Plan-First / 팀 자동화
    ↓        (여러 실행을 충돌 없이)
-Part 7.  실무 적용 가이드 — 7축 하네스를 실제로 쓰는 법
+Part 7.  하네스 적용하기 — 처음 쓰는 사람이 7개를 순서대로 붙이는 법
    ↓        (개념 → 설정 파일과 습관)
 Part 8.  CodeCraft — 요구사항 → 설계(OOD/SOLID) → 구현 → 검증
    ↓        (무엇을 만들지 사람이 먼저 판단)
@@ -64,7 +64,7 @@ Part 10. Graph Engineering — Node/Edge/State, 병렬·검증·복구·상태 �
 | | 12. Worktree | 파일 시스템 격리와 머지 |
 | | 13. Plan-First·Thinking·Sub-Agent | 언제 무엇을 쓸지 |
 | | 14. GitHub Issue-PR 자동화 | 어디까지 자동, 어디부터 사람 |
-| **[7. 실무 적용 가이드](07.%20Part%207%20—%20실무%20적용%20가이드.md)** | 15. 하네스별 실전 적용 | 7축을 실제로 쓰는 법 · diff 읽기 · Subagent 호출 · 전체 흐름 예시 |
+| **[7. 하네스 적용하기](07.%20Part%207%20—%20하네스%20적용하기.md)** | 15. 7개 하네스, 하나씩 붙이기 | 3단계로 나눠 적용 · 문제 체험 → 해결 → 확인 |
 | **[8. CodeCraft](08.%20Part%208%20—%20CodeCraft.md)** | 16. Code Craft와 5단계 루틴 | Explore→Brainstorm→Plan→Implement→Verify |
 | | 17. 기능 요구사항 분석 | Input→Logic→Output / 제약 / 변경 가능성 |
 | | 18. 좋은 설계란 무엇인가 | 5원칙 / 골디락스 / 결합도·응집도 |
