@@ -1,7 +1,12 @@
 # 하네스 엔지니어링 (Harness Engineering)
+
+> 32편의 강의 노트를 하나의 체계로 통합·재구성했다. 중복은 합치고, 흩어진 내용은 주제 아래로 모았다.
+> 본문은 원본 강의 내용이고, 원본이 개념만 다루고 실물이 없던 부분(설정 파일·코드·YAML)은
+> 각 장 안에 **`> 💡 실물 —` 블록**으로 표시해 넣었다. 표시가 없는 내용은 전부 원본 강의에서 온 것이다.
+
 ---
 
-## 이 강의가 답하는 질문
+## 이 책이 답하는 질문
 
 > **AI 코딩 도구가 삽질할 때, 무엇을 고쳐야 하는가?**
 
@@ -10,6 +15,36 @@
 그 위에서 **무엇을 만들지 판단하는 능력**(CodeCraft: 요구사항 → 설계 → 구현 → 검증)과, 작업이 커졌을 때 **여러 실행의 관계를 설계하는 능력**(Graph Engineering)까지가 이 책의 범위다.
 
 > **Claude Code의 성능은 모델 하나로 결정되지 않는다. 모델이 어떤 Context를 보고 · 어떤 Permission으로 · 어떤 Tool을 사용하며 · 어떻게 검증받는지를 설계한 Harness가 크게 좌우한다.**
+
+---
+
+## 전체 지도
+
+```text
+Part 1.  기초 — 하네스가 무엇이고 어디에 붙어 있는가
+   ↓
+Part 2~5. 하네스를 하나씩 — Context / Permission / Verification·Debug / Tool
+   ↓        (한 번의 실행을 안전하고 정확하게)
+Part 6.  작업 분리와 병렬 운영 — Subagent / Worktree / Plan-First / 팀 자동화
+   ↓        (여러 실행을 충돌 없이)
+Part 7.  실무 체크리스트 — 여기까지를 실제 프로젝트에 붙이는 순서
+   ↓        (개념 → 설정 파일과 습관)
+Part 8.  CodeCraft — 요구사항 → 설계(OOD/SOLID) → 구현 → 검증
+   ↓        (무엇을 만들지 사람이 먼저 판단)
+Part 9.  모델 세대별 운영 — Opus 4.8 / Opus 5 / Fable 5
+   ↓        (모델이 바뀌면 하네스도 바뀐다)
+Part 10. Graph Engineering — Node/Edge/State, 병렬·검증·복구·상태 영속화
+```
+
+| 설계 단계 | 대상 | 이 책의 위치 |
+|---|---|---|
+| Prompt Engineering | 한 번의 요청(메시지) | (전제) |
+| Context Engineering | 모델이 참고할 정보의 범위 | Part 2 |
+| **Harness Engineering** | 한 번의 실행 환경(권한·도구·완료 기준) | Part 1·3·4·5 |
+| Loop Engineering | 반복 실행 | 25장 |
+| Graph Engineering | 여러 작업과 실행 사이의 관계 | Part 10 |
+
+---
 
 ## 목차
 
@@ -29,20 +64,21 @@
 | | 12. Worktree | 파일 시스템 격리와 머지 |
 | | 13. Plan-First·Thinking·Sub-Agent | 언제 무엇을 쓸지 |
 | | 14. GitHub Issue-PR 자동화 | 어디까지 자동, 어디부터 사람 |
-| **[7. CodeCraft](07.%20Part%207%20—%20CodeCraft.md)** | 15. Code Craft와 5단계 루틴 | Explore→Brainstorm→Plan→Implement→Verify |
-| | 16. 기능 요구사항 분석 | Input→Logic→Output / 제약 / 변경 가능성 |
-| | 17. 좋은 설계란 무엇인가 | 5원칙 / 골디락스 / 결합도·응집도 |
-| | 18. OOD | 책임 → 클래스 / Entity·VO·DTO |
-| | 19. SOLID | 수정 범위를 좁히는 기준 |
-| | 20. 미니 케이스 | Delivery Fee Calculator에 하네스 적용 |
-| **[8. 모델 세대](08.%20Part%208%20—%20모델%20세대별%20운영.md)** | 21. Opus 4.8 | Adaptive Thinking / Dynamic Workflow |
-| | 22. Opus 5 | 지울 것 / 장황함 / Scope Creep |
-| | 23. Fable 5 | 장기 자율 실행 / Effort Inversion |
-| **[9. Graph](09.%20Part%209%20—%20Graph%20Engineering.md)** | 24. 왜 그래프인가 | 루프의 4가지 한계 |
-| | 25. Node·Edge·State | Fake Edge / 다이아몬드 / Barrier·Streaming / Checker |
-| | 26. 실전 패턴과 운영 | 패턴 7 / State 영속화 / Rulebook / 숨은 비용 |
-| **[10. AI-네이티브](10.%20Part%2010%20—%20AI-네이티브%20엔지니어.md)** ⚠️ | 27. 마인드셋 | 협력자 · 신뢰하되 검증 · 모든 개발자는 매니저 |
-| *외부 자료* | 28. 도입 8단계 | AI로 시작 → 도구 → 프롬프트 → 검증 → 확장 |
-| | 29. 도구 지형 | 어시스턴트 / 비동기 에이전트 / 프로토타이퍼 · 70% 문제 |
-| | 30. SDLC 전 단계 | 요구사항 → 설계 → 구현 → 테스트 → 유지보수 → 운영 |
-| | 31. 책임감 있는 활용 7원칙 | 검증 · 증폭기 · 팀 표준화 · 윤리 · 리더십 |
+| **[7. 실무 체크리스트](07.%20Part%207%20—%20실무%20체크리스트.md)** | 15. 실무 체크리스트 | 첫날 셋업 순서 / 템플릿 / 증상별 조치 / 확장 시점 |
+| **[8. CodeCraft](08.%20Part%208%20—%20CodeCraft.md)** | 16. Code Craft와 5단계 루틴 | Explore→Brainstorm→Plan→Implement→Verify |
+| | 17. 기능 요구사항 분석 | Input→Logic→Output / 제약 / 변경 가능성 |
+| | 18. 좋은 설계란 무엇인가 | 5원칙 / 골디락스 / 결합도·응집도 |
+| | 19. OOD | 책임 → 클래스 / Entity·VO·DTO |
+| | 20. SOLID | 수정 범위를 좁히는 기준 |
+| | 21. 미니 케이스 | Delivery Fee Calculator에 하네스 적용 |
+| **[9. 모델 세대](09.%20Part%209%20—%20모델%20세대별%20운영.md)** | 22. Opus 4.8 | Adaptive Thinking / Dynamic Workflow |
+| | 23. Opus 5 | 지울 것 / 장황함 / Scope Creep |
+| | 24. Fable 5 | 장기 자율 실행 / Effort Inversion |
+| **[10. Graph](10.%20Part%2010%20—%20Graph%20Engineering.md)** | 25. 왜 그래프인가 | 루프의 4가지 한계 |
+| | 26. Node·Edge·State | Fake Edge / 다이아몬드 / Barrier·Streaming / Checker |
+| | 27. 실전 패턴과 운영 | 패턴 7 / State 영속화 / Rulebook / 숨은 비용 |
+| **[11. AI-네이티브](11.%20Part%2011%20—%20AI-네이티브%20엔지니어.md)** ⚠️ | 28. 마인드셋 | 협력자 · 신뢰하되 검증 · 모든 개발자는 매니저 |
+| *외부 자료* | 29. 도입 8단계 | AI로 시작 → 도구 → 프롬프트 → 검증 → 확장 |
+| | 30. 도구 지형 | 어시스턴트 / 비동기 에이전트 / 프로토타이퍼 · 70% 문제 |
+| | 31. SDLC 전 단계 | 요구사항 → 설계 → 구현 → 테스트 → 유지보수 → 운영 |
+| | 32. 책임감 있는 활용 7원칙 | 검증 · 증폭기 · 팀 표준화 · 윤리 · 리더십 |
